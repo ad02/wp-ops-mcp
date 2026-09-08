@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wp-ops-mcp"
+version = "1.4.0"
+description = "MCP server for editing WordPress sites (Divi 4/5 + Gutenberg) over the REST API"
+requires-python = ">=3.11"
+dependencies = [
+    # mcp 2.0 removed mcp.server.fastmcp, which this server is built on - keep the pin.
+    "mcp>=1.10,<2",
+    "httpx>=0.27",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "respx>=0.21",
+]
+
+[project.scripts]
+wp-ops-mcp = "wp_ops_mcp.server:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["wp_ops_mcp*", "scripts*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

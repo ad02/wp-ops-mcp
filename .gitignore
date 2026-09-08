@@ -1,0 +1,20 @@
+# NEVER commit: live site credentials (application passwords).
+data/wp_ops_mcp/credentials.json
+credentials.json
+.env
+.env.*
+
+# NEVER commit: captured client page content and discovered site profiles.
+data/wp_ops_mcp/corpus/
+data/wp_ops_mcp/profiles.db
+data/sites.json
+data/accounts.json
+
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
